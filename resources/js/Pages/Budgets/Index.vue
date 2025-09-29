@@ -233,8 +233,26 @@
                                 </div>
 
                                 <!-- Warning if over budget -->
+                                <!-- Warning if budget is exactly used -->
                                 <div
-                                    v-if="budget.percentage >= 100"
+                                    v-if="
+                                        budget.percentage === 100 &&
+                                        budget.remaining === 0
+                                    "
+                                    class="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-md"
+                                >
+                                    <p class="text-sm text-blue-800">
+                                        <span class="font-medium"
+                                            >✅ Budget exactly used!</span
+                                        >
+                                        You've used your entire budget for this
+                                        category.
+                                    </p>
+                                </div>
+
+                                <!-- Warning if over budget -->
+                                <div
+                                    v-else-if="budget.percentage > 100"
                                     class="mt-3 p-3 bg-red-50 border border-red-200 rounded-md"
                                 >
                                     <p class="text-sm text-red-800">
@@ -261,9 +279,7 @@
                                             >⚡ Almost there!</span
                                         >
                                         You have
-                                        {{
-                                            formatCurrency(budget.remaining)
-                                        }}
+                                        {{ formatCurrency(budget.remaining) }}
                                         left for this category.
                                     </p>
                                 </div>
