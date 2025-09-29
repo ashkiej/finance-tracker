@@ -51,7 +51,7 @@ A modern, full-stack personal finance management application built with Laravel 
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/finance-tracker.git
+git clone https://github.com/ashkiej/finance-tracker.git
 cd finance-tracker
 ```
 
@@ -191,9 +191,9 @@ Contributions, issues, and feature requests are welcome!
 
 ## 📧 Contact
 
-Your Name - your.email@example.com
+Your Name - ashkiejay@gmail.com
 
-Project Link: [https://github.com/yourusername/finance-tracker](https://github.com/yourusername/finance-tracker)
+Project Link: [https://github.com/ashkiej/finance-tracker](https://github.com/ashkiej/finance-tracker)
 
 ---
 
