@@ -8,22 +8,20 @@
 
         <div class="py-12">
             <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-card overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
                         <form @submit.prevent="submitForm" class="space-y-6">
                             <!-- Type Display (Read-only) -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Transaction Type
                                 </label>
                                 <div
                                     :class="[
                                         'p-4 border-2 rounded-lg',
                                         transaction.type === 'income'
-                                            ? 'border-green-500 bg-green-50'
-                                            : 'border-red-500 bg-red-50',
+                                            ? 'border-green-500 bg-success-content'
+                                            : 'border-red-500 bg-error-content',
                                     ]"
                                 >
                                     <div class="text-2xl mb-2">
@@ -44,14 +42,12 @@
 
                             <!-- Category -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Category *
                                 </label>
                                 <select
                                     v-model="form.category_id"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 >
                                     <option value="">Select a category</option>
@@ -73,9 +69,7 @@
 
                             <!-- Amount -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Amount *
                                 </label>
                                 <div class="relative">
@@ -90,7 +84,7 @@
                                         step="0.01"
                                         min="0.01"
                                         placeholder="0.00"
-                                        class="w-full pl-7 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        class="w-full bg-accent pl-7 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                         required
                                     />
                                 </div>
@@ -104,15 +98,13 @@
 
                             <!-- Date -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Date *
                                 </label>
                                 <input
                                     v-model="form.transaction_date"
                                     type="date"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 />
                                 <div
@@ -125,16 +117,14 @@
 
                             <!-- Description -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Description
                                 </label>
                                 <textarea
                                     v-model="form.description"
                                     rows="3"
                                     placeholder="Add a note about this transaction..."
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                 ></textarea>
                                 <div
                                     v-if="form.errors.description"
@@ -148,14 +138,14 @@
                             <div class="flex justify-end space-x-3">
                                 <Link
                                     :href="route('transactions.index')"
-                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
+                                    class="px-4 py-2 bg-muted text-muted-700 rounded-md hover:bg-muted/30"
                                 >
                                     Cancel
                                 </Link>
                                 <button
                                     type="submit"
                                     :disabled="form.processing"
-                                    class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50"
+                                    class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/70 disabled:opacity-50"
                                 >
                                     {{
                                         form.processing

@@ -1,6 +1,6 @@
 <template>
     <div class="space-y-4">
-        <div v-if="budgets.length === 0" class="text-center py-8 text-gray-500">
+        <div v-if="budgets.length === 0" class="text-center py-8">
             No budgets set for this month
         </div>
 
@@ -11,16 +11,14 @@
                         class="w-3 h-3 rounded-full"
                         :style="{ backgroundColor: budget.category.color }"
                     ></div>
-                    <span class="font-medium text-gray-900">{{
-                        budget.category.name
-                    }}</span>
+                    <span class="font-medium">{{ budget.category.name }}</span>
                 </div>
                 <div class="text-right">
-                    <p class="text-sm font-medium text-gray-900">
+                    <p class="text-sm font-medium">
                         {{ formatCurrency(budget.spent) }} /
                         {{ formatCurrency(budget.amount) }}
                     </p>
-                    <p class="text-xs text-gray-500">
+                    <p class="text-xs text-muted-foreground/50">
                         {{ formatCurrency(budget.remaining) }} remaining
                     </p>
                 </div>
@@ -34,7 +32,7 @@
                 ></div>
             </div>
 
-            <p class="text-xs text-gray-500">
+            <p class="text-xs text-muted-foreground/50">
                 {{ Math.round(budget.percentage) }}% used
             </p>
         </div>

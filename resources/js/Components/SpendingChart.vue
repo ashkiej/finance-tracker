@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted, ref } from "vue";
 import {
     Chart as ChartJS,
     Title,
@@ -26,6 +26,7 @@ const props = defineProps({
 });
 
 const hasData = computed(() => props.data && props.data.length > 0);
+const theme = ref(localStorage.getItem("theme") || "system");
 
 const chartData = computed(() => ({
     labels: props.data?.map((item) => item.name) || [],
@@ -33,13 +34,13 @@ const chartData = computed(() => ({
         {
             data: props.data?.map((item) => item.total) || [],
             backgroundColor: props.data?.map((item) => item.color) || [],
-            borderWidth: 2,
-            borderColor: "#ffffff",
+            borderWidth: 1,
+            borderColor: theme.value === "dark" ? "#09090b" : "#ffffff",
         },
     ],
 }));
 
-const chartOptions = {
+const chartOptions = computed(() => ({
     responsive: true,
     maintainAspectRatio: true,
     aspectRatio: 1,
@@ -49,6 +50,7 @@ const chartOptions = {
             labels: {
                 padding: 20,
                 usePointStyle: true,
+                color: theme.value === "dark" ? "#fafafa" : "#333",
             },
         },
         tooltip: {
@@ -64,5 +66,11 @@ const chartOptions = {
             },
         },
     },
-};
+}));
+
+onMounted(() => {
+    window.addEventListener("theme-changed", (e) => {
+        theme.value = e.detail.theme;
+    });
+});
 </script>

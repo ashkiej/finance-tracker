@@ -23,6 +23,10 @@ const applyTheme = (newTheme) => {
     // document.documentElement.classList.toggle("dark", isDark);
     localStorage.setItem("theme", newTheme);
 
+    window.dispatchEvent(
+        new CustomEvent("theme-changed", { detail: { theme: newTheme } })
+    );
+
     theme.value = newTheme;
 };
 
@@ -45,10 +49,6 @@ onMounted(() => {
                 applyTheme("system");
             }
         });
-});
-
-watch(theme, (newTheme) => {
-    applyTheme(newTheme);
 });
 </script>
 

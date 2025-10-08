@@ -1,21 +1,19 @@
 <template>
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl leading-tight">
                 Add New Category
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-card overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
                         <form @submit.prevent="submitForm" class="space-y-6">
                             <!-- Type Selection -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Category Type *
                                 </label>
                                 <div class="grid grid-cols-2 gap-4">
@@ -25,7 +23,7 @@
                                         :class="[
                                             'p-4 border-2 rounded-lg transition',
                                             form.type === 'income'
-                                                ? 'border-green-500 bg-green-50'
+                                                ? 'border-green-500 bg-success-content'
                                                 : 'border-gray-300 hover:border-gray-400',
                                         ]"
                                     >
@@ -38,7 +36,7 @@
                                         :class="[
                                             'p-4 border-2 rounded-lg transition',
                                             form.type === 'expense'
-                                                ? 'border-red-500 bg-red-50'
+                                                ? 'border-red-500 bg-error-content'
                                                 : 'border-gray-300 hover:border-gray-400',
                                         ]"
                                     >
@@ -56,16 +54,14 @@
 
                             <!-- Name -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Category Name *
                                 </label>
                                 <input
                                     v-model="form.name"
                                     type="text"
                                     placeholder="e.g., Groceries, Salary, Entertainment"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 />
                                 <div
@@ -78,16 +74,14 @@
 
                             <!-- Color -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Color *
                                 </label>
                                 <div class="flex space-x-2 items-center">
                                     <input
                                         v-model="form.color"
                                         type="color"
-                                        class="h-10 w-20 rounded border-gray-300"
+                                        class="h-10 w-20 rounded"
                                         required
                                     />
                                     <span class="text-sm text-gray-600">{{
@@ -119,16 +113,14 @@
 
                             <!-- Icon -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Icon *
                                 </label>
                                 <input
                                     v-model="form.icon"
                                     type="text"
                                     placeholder="cash, shopping-bag, heart"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 />
                                 <p class="text-xs text-gray-500 mt-1">
@@ -144,27 +136,23 @@
                             </div>
 
                             <!-- Preview -->
-                            <div class="border rounded-lg p-4 bg-gray-50">
-                                <p
-                                    class="text-sm font-medium text-gray-700 mb-2"
-                                >
-                                    Preview
-                                </p>
+                            <div class="bg-accent border rounded-lg p-4">
+                                <p class="text-sm font-medium mb-2">Preview</p>
                                 <div class="flex items-center space-x-3">
                                     <div
                                         class="w-12 h-12 rounded-full flex items-center justify-center"
                                         :style="{ backgroundColor: form.color }"
                                     >
-                                        <span class="text-white text-xl">{{
+                                        <span class="text-xl">{{
                                             form.type === "income" ? "💰" : "💸"
                                         }}</span>
                                     </div>
                                     <div>
-                                        <p class="font-medium text-gray-900">
+                                        <p class="font-medium">
                                             {{ form.name || "Category Name" }}
                                         </p>
                                         <p
-                                            class="text-sm text-gray-500 capitalize"
+                                            class="text-sm text-muted-foreground capitalize"
                                         >
                                             {{ form.type }}
                                         </p>
@@ -176,14 +164,14 @@
                             <div class="flex justify-end space-x-3">
                                 <Link
                                     :href="route('categories.index')"
-                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
+                                    class="px-4 py-2 bg-muted text-muted-700 rounded-md hover:bg-muted/30"
                                 >
                                     Cancel
                                 </Link>
                                 <button
                                     type="submit"
                                     :disabled="form.processing"
-                                    class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50"
+                                    class="px-4 py-2 bg-primary rounded-md hover:bg-primary/70 disabled:opacity-50"
                                 >
                                     {{
                                         form.processing

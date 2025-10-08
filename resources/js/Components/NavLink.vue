@@ -17,11 +17,11 @@ defineProps({
                 : 'inline-flex items-center px-1 pt-1 border-b-2 text-lg font-medium',
             active
                 ? sidebar
-                    ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                    : 'border-indigo-500 text-gray-900'
+                    ? 'bg-sidebar-primary hover:bg-sidebar-primary/90'
+                    : 'border-primary text-foreground'
                 : sidebar
-                ? 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                ? 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
+                : 'border-transparent text-muted-foreground hover:border-border hover:text-foreground',
         ]"
     >
         <slot />

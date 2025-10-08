@@ -2,7 +2,9 @@
     <AuthenticatedLayout>
         <template #header>
             <div class="flex justify-between items-center">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                <h2
+                    class="font-semibold text-primary text-xl text-gray-800 leading-tight"
+                >
                     Budgets
                 </h2>
                 <Link

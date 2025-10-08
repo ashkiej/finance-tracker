@@ -2,12 +2,12 @@
     <AuthenticatedLayout>
         <template #header>
             <div class="flex justify-between items-center">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                <h2 class="font-semibold text-primary text-xl leading-tight">
                     Transactions
                 </h2>
                 <Link
                     :href="route('transactions.create')"
-                    class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+                    class="px-4 py-2 bg-primary rounded-md hover:bg-primary/70"
                 >
                     Add Transaction
                 </Link>
@@ -26,7 +26,7 @@
 
                 <!-- Filters -->
                 <div
-                    class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6"
+                    class="bg-card text-card-foreground overflow-hidden shadow-sm sm:rounded-lg mb-6"
                 >
                     <div class="p-6">
                         <form
@@ -34,26 +34,24 @@
                             class="grid grid-cols-1 md:grid-cols-4 gap-4"
                         >
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                <label class="block text-sm font-medium mb-2"
                                     >Search</label
                                 >
                                 <input
                                     v-model="filterForm.search"
                                     type="text"
                                     placeholder="Search description..."
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md shadow-sm"
                                 />
                             </div>
 
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                <label class="block text-sm font-medium = mb-2"
                                     >Type</label
                                 >
                                 <select
                                     v-model="filterForm.type"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md shadow-sm"
                                 >
                                     <option value="">All Types</option>
                                     <option value="income">Income</option>
@@ -62,13 +60,12 @@
                             </div>
 
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                <label class="block text-sm font-medium = mb-2"
                                     >Category</label
                                 >
                                 <select
                                     v-model="filterForm.category_id"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md shadow-sm"
                                 >
                                     <option value="">All Categories</option>
                                     <option
@@ -84,14 +81,14 @@
                             <div class="flex items-end space-x-2">
                                 <button
                                     type="submit"
-                                    class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+                                    class="px-4 py-2 bg-primary rounded-md hover:bg-primary/80"
                                 >
                                     Filter
                                 </button>
                                 <button
                                     type="button"
                                     @click="clearFilters"
-                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
+                                    class="px-4 py-2 bg-accent rounded-md hover:bg-accent/10"
                                 >
                                     Clear
                                 </button>
@@ -101,7 +98,7 @@
                 </div>
 
                 <!-- Transactions List -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-card overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
                         <TransactionList
                             :transactions="transactions.data"
@@ -113,7 +110,7 @@
                             class="mt-6 flex justify-between items-center"
                             v-if="transactions.data.length > 0"
                         >
-                            <div class="text-sm text-gray-700">
+                            <div class="text-sm">
                                 Showing {{ transactions.from }} to
                                 {{ transactions.to }} of
                                 {{ transactions.total }} results
@@ -126,8 +123,8 @@
                                     :class="[
                                         'px-3 py-2 rounded-md text-sm',
                                         link.active
-                                            ? 'bg-indigo-600 text-white'
-                                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300',
+                                            ? 'bg-primary'
+                                            : 'bg-accent hover:bg-accent/10',
                                         !link.url
                                             ? 'opacity-50 cursor-not-allowed'
                                             : '',

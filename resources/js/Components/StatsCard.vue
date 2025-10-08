@@ -1,19 +1,23 @@
 <template>
-    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+    <div
+        class="bg-card text-card-foreground overflow-hidden shadow-sm sm:rounded-lg"
+    >
         <div class="p-6">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
                     <component
                         :is="iconComponent"
-                        :class="`h-6 w-6 text-${color}-600`"
+                        :class="`h-6 w-6 ${color}`"
                     />
                 </div>
                 <div class="ml-5 w-0 flex-1">
                     <dl>
-                        <dt class="text-sm font-medium text-gray-500 truncate">
+                        <dt
+                            class="text-sm font-medium text-muted-foreground truncate"
+                        >
                             {{ title }}
                         </dt>
-                        <dd class="text-lg font-medium text-gray-900">
+                        <dd class="text-lg font-medium text-card-foreground">
                             {{
                                 formatCurreny
                                     ? formatCurrency(value)

@@ -2,12 +2,12 @@
     <AuthenticatedLayout>
         <template #header>
             <div class="flex justify-between items-center">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                <h2 class="font-semibold text-primary text-xl leading-tight">
                     Categories
                 </h2>
                 <Link
                     :href="route('categories.create')"
-                    class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+                    class="px-4 py-2 bg-primary rounded-md hover:bg-primary/70"
                 >
                     Add Category
                 </Link>
@@ -32,10 +32,10 @@
 
                 <!-- Income Categories -->
                 <div
-                    class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6"
+                    class="bg-card overflow-hidden shadow-sm sm:rounded-lg mb-6"
                 >
                     <div class="p-6">
-                        <h3 class="text-lg font-medium text-gray-900 mb-4">
+                        <h3 class="text-lg font-medium mb-4">
                             Income Categories
                         </h3>
                         <div
@@ -59,12 +59,12 @@
                                             >
                                         </div>
                                         <div>
-                                            <h4
-                                                class="font-medium text-gray-900"
-                                            >
+                                            <h4 class="font-medium">
                                                 {{ category.name }}
                                             </h4>
-                                            <p class="text-sm text-gray-500">
+                                            <p
+                                                class="text-sm text-muted-foreground"
+                                            >
                                                 {{
                                                     category.transactions_count
                                                 }}
@@ -80,7 +80,7 @@
                                                     category.id
                                                 )
                                             "
-                                            class="text-blue-600 hover:text-blue-800"
+                                            class="hover:text-info"
                                         >
                                             <svg
                                                 class="w-5 h-5"
@@ -98,7 +98,7 @@
                                         </Link>
                                         <button
                                             @click="deleteCategory(category.id)"
-                                            class="text-red-600 hover:text-red-800"
+                                            class="hover:text-primary"
                                             :disabled="
                                                 category.transactions_count > 0
                                             "
@@ -136,9 +136,9 @@
                 </div>
 
                 <!-- Expense Categories -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-card overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
-                        <h3 class="text-lg font-medium text-gray-900 mb-4">
+                        <h3 class="text-lg font-medium mb-4">
                             Expense Categories
                         </h3>
                         <div
@@ -162,12 +162,12 @@
                                             >
                                         </div>
                                         <div>
-                                            <h4
-                                                class="font-medium text-gray-900"
-                                            >
+                                            <h4 class="font-medium">
                                                 {{ category.name }}
                                             </h4>
-                                            <p class="text-sm text-gray-500">
+                                            <p
+                                                class="text-sm text-muted-foreground"
+                                            >
                                                 {{
                                                     category.transactions_count
                                                 }}
@@ -183,7 +183,7 @@
                                                     category.id
                                                 )
                                             "
-                                            class="text-blue-600 hover:text-blue-800"
+                                            class="hover:text-info"
                                         >
                                             <svg
                                                 class="w-5 h-5"
@@ -201,7 +201,7 @@
                                         </Link>
                                         <button
                                             @click="deleteCategory(category.id)"
-                                            class="text-red-600 hover:text-red-800"
+                                            class="hover:text-primary"
                                             :disabled="
                                                 category.transactions_count > 0
                                             "

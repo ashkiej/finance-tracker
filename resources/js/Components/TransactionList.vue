@@ -2,7 +2,7 @@
     <div class="space-y-3">
         <div
             v-if="transactions.length === 0"
-            class="text-center py-8 text-gray-500"
+            class="text-center py-8 text-muted-foreground"
         >
             No transactions found
         </div>
@@ -10,7 +10,7 @@
         <div
             v-for="transaction in transactions"
             :key="transaction.id"
-            class="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
+            class="flex items-center justify-between p-4 bg-accent rounded-lg hover:bg-accent/50 transition"
         >
             <div class="flex items-center space-x-4">
                 <div
@@ -22,13 +22,13 @@
                     <span class="text-lg">💰</span>
                 </div>
                 <div>
-                    <p class="font-medium text-gray-900">
+                    <p class="font-medium text-foreground">
                         {{ transaction.category.name }}
                     </p>
-                    <p class="text-sm text-gray-500">
+                    <p class="text-sm text-muted-foreground">
                         {{ transaction.description || "No description" }}
                     </p>
-                    <p class="text-xs text-gray-400">
+                    <p class="text-xs text-muted-foreground/50">
                         {{ formatDate(transaction.transaction_date) }}
                     </p>
                 </div>
@@ -39,8 +39,8 @@
                     class="font-semibold"
                     :class="
                         transaction.type === 'income'
-                            ? 'text-green-600'
-                            : 'text-red-600'
+                            ? 'text-success'
+                            : 'text-primary'
                     "
                 >
                     {{ transaction.type === "income" ? "+" : "-"
@@ -49,13 +49,13 @@
                 <div class="flex space-x-2 mt-1" v-if="showActions">
                     <Link
                         :href="route('transactions.edit', transaction.id)"
-                        class="text-xs text-blue-600 hover:text-blue-800"
+                        class="text-xs hover:text-info"
                     >
                         Edit
                     </Link>
                     <button
                         @click="deleteTransaction(transaction.id)"
-                        class="text-xs text-red-600 hover:text-red-800"
+                        class="text-xs hover:text-primary/90"
                     >
                         Delete
                     </button>

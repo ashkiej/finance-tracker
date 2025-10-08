@@ -1,7 +1,9 @@
 <template>
     <AppLayout title="Dashboard">
         <template #header>
-            <h2 class="font-semibold text-xl leading-tight py-2">Dashboard</h2>
+            <h2 class="font-semibold text-primary text-xl leading-tight py-2">
+                Dashboard
+            </h2>
         </template>
 
         <div class="py-12">
@@ -11,25 +13,29 @@
                     <StatsCard
                         title="Total Income"
                         :value="stats.totalIncome"
-                        color="green"
+                        color="text-green-500"
                         icon="arrow-up"
                     />
                     <StatsCard
                         title="Total Expenses"
                         :value="stats.totalExpenses"
-                        color="red"
+                        color="text-red-500"
                         icon="arrow-down"
                     />
                     <StatsCard
                         title="Balance"
                         :value="stats.balance"
-                        :color="stats.balance >= 0 ? 'green' : 'red'"
+                        :color="
+                            stats.balance >= 0
+                                ? 'text-green-500'
+                                : 'text-red-500'
+                        "
                         icon="banknotes"
                     />
                     <StatsCard
                         title="Transactions"
                         :value="stats.transactionCount"
-                        color="blue"
+                        color="text-blue-500"
                         icon="list-bullet"
                         :formatCurreny="false"
                     />
@@ -38,10 +44,12 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <!-- Spending by Category Chart -->
                     <div
-                        class="bg-white overflow-hidden shadow-sm sm:rounded-lg"
+                        class="bg-card text-card-foreground overflow-hidden shadow-sm sm:rounded-lg"
                     >
                         <div class="p-6">
-                            <h3 class="text-lg font-medium text-gray-900 mb-4">
+                            <h3
+                                class="text-lg font-medium text-card-foreground mb-4"
+                            >
                                 Spending by Category
                             </h3>
                             <SpendingChart :data="spendingByCategory" />
@@ -50,16 +58,18 @@
 
                     <!-- Recent Transactions -->
                     <div
-                        class="bg-white overflow-hidden shadow-sm sm:rounded-lg"
+                        class="bg-card text-card-foreground overflow-hidden shadow-sm sm:rounded-lg"
                     >
                         <div class="p-6">
                             <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-lg font-medium text-gray-900">
+                                <h3
+                                    class="text-lg font-medium text-card-foreground"
+                                >
                                     Recent Transactions
                                 </h3>
                                 <Link
                                     :href="route('transactions.index')"
-                                    class="text-sm text-indigo-600 hover:text-indigo-900"
+                                    class="text-sm hover:text-primary/100"
                                 >
                                     View all
                                 </Link>
@@ -73,11 +83,13 @@
 
                 <!-- Budget Progress -->
                 <div
-                    class="bg-white overflow-hidden shadow-sm sm:rounded-lg"
+                    class="bg-card text-card-foreground overflow-hidden shadow-sm sm:rounded-lg"
                     v-if="budgets.length > 0"
                 >
                     <div class="p-6">
-                        <h3 class="text-lg font-medium text-gray-900 mb-4">
+                        <h3
+                            class="text-lg font-medium text-card-foreground mb-4"
+                        >
                             Budget Progress
                         </h3>
                         <BudgetProgress :budgets="budgets" />
