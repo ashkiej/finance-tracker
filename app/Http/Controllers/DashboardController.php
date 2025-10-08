@@ -78,7 +78,7 @@ class DashboardController extends Controller
                 'totalIncome' => $totalIncome,
                 'totalExpenses' => $totalExpenses,
                 'balance' => $totalIncome - $totalExpenses,
-                'transactionCount' => $user->transactions()->count(),
+                'transactionCount' => $transactions->count(),
             ],
             'recentTransactions' => $transactions,
             'spendingByCategory' => $spendingByCategory,

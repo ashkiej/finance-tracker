@@ -5,6 +5,7 @@ import NavLink from "@/Components/NavLink.vue";
 import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import { Link } from "@inertiajs/vue3";
+import ThemeToggle from "@/Components/ThemeToggle.vue";
 
 const sidebarOpen = ref(false);
 </script>
@@ -101,6 +102,7 @@ const sidebarOpen = ref(false);
                         </DropdownLink>
                     </template>
                 </Dropdown>
+                <ThemeToggle />
             </div>
         </aside>
 
@@ -109,13 +111,17 @@ const sidebarOpen = ref(false);
             <!-- Page Heading -->
             <header class="bg-white shadow" v-if="$slots.header">
                 <div class="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
-                    <button
-                        @click="sidebarOpen = true"
-                        class="md:hidden p-2 text-gray-500 hover:bg-gray-100 rounded"
-                    >
-                        ☰
-                    </button>
-                    <slot name="header" />
+                    <div class="flex items-center">
+                        <button
+                            @click="sidebarOpen = true"
+                            class="md:hidden p-2 text-gray-500 hover:bg-gray-100 rounded flex-shrink-0"
+                        >
+                            ☰
+                        </button>
+                        <div class="flex-1 min-w-0">
+                            <slot name="header" />
+                        </div>
+                    </div>
                 </div>
             </header>
 

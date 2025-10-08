@@ -1,13 +1,7 @@
 <template>
     <AppLayout title="Dashboard">
         <template #header>
-            <div class="flex justify-between items-center">
-                <h2
-                    class="font-semibold text-xl text-gray-800 leading-tight py-2"
-                >
-                    Dashboard
-                </h2>
-            </div>
+            <h2 class="font-semibold text-xl leading-tight py-2">Dashboard</h2>
         </template>
 
         <div class="py-12">
