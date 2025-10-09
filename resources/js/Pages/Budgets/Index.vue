@@ -2,14 +2,12 @@
     <AuthenticatedLayout>
         <template #header>
             <div class="flex justify-between items-center">
-                <h2
-                    class="font-semibold text-primary text-xl text-gray-800 leading-tight"
-                >
+                <h2 class="font-semibold text-primary text-xl leading-tight">
                     Budgets
                 </h2>
                 <Link
                     :href="route('budgets.create')"
-                    class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+                    class="px-4 py-2 bg-primary rounded-md hover:bg-primary/70"
                 >
                     Add Budget
                 </Link>
@@ -21,32 +19,31 @@
                 <!-- Flash Messages -->
                 <div
                     v-if="$page.props.flash && $page.props.flash.success"
-                    class="mb-4 p-4 bg-green-50 border border-green-200 text-green-800 rounded-lg"
+                    class="mb-4 p-4 bg-success-content border border-green-200 rounded-lg"
                 >
                     {{ $page.props.flash.success }}
                 </div>
                 <div
                     v-if="$page.props.flash && $page.props.flash.error"
-                    class="mb-4 p-4 bg-red-50 border border-red-200 text-red-800 rounded-lg"
+                    class="mb-4 p-4 bg-error-content border border-red-200 rounded-lg"
                 >
                     {{ $page.props.flash.error }}
                 </div>
 
                 <!-- Month/Year Selector -->
                 <div
-                    class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6"
+                    class="bg-card overflow-hidden shadow-sm sm:rounded-lg mb-6"
                 >
                     <div class="p-6">
                         <div class="flex items-center space-x-4">
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                <label class="block text-sm font-medium mb-2"
                                     >Month</label
                                 >
                                 <select
                                     v-model="selectedMonth"
                                     @change="updatePeriod"
-                                    class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="rounded-md bg-accent border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                 >
                                     <option
                                         v-for="month in months"
@@ -59,14 +56,13 @@
                             </div>
 
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                <label class="block text-sm font-medium mb-2"
                                     >Year</label
                                 >
                                 <select
                                     v-model="selectedYear"
                                     @change="updatePeriod"
-                                    class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="rounded-md bg-accent border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                 >
                                     <option
                                         v-for="year in years"
@@ -82,18 +78,18 @@
                 </div>
 
                 <!-- Budgets List -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-card overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
                         <div
                             v-if="budgets.length === 0"
                             class="text-center py-12"
                         >
-                            <p class="text-gray-500 mb-4">
+                            <p class="text-muted-foreground mb-4">
                                 No budgets set for this period
                             </p>
                             <Link
                                 :href="route('budgets.create')"
-                                class="text-indigo-600 hover:text-indigo-800 font-medium"
+                                class="text-primary hover:text-primary/70 font-medium"
                             >
                                 Create your first budget
                             </Link>
@@ -121,12 +117,12 @@
                                             >
                                         </div>
                                         <div>
-                                            <h3
-                                                class="font-medium text-gray-900 text-lg"
-                                            >
+                                            <h3 class="font-medium text-lg">
                                                 {{ budget.category.name }}
                                             </h3>
-                                            <p class="text-sm text-gray-500">
+                                            <p
+                                                class="text-sm text-muted-foreground"
+                                            >
                                                 {{
                                                     formatCurrency(budget.spent)
                                                 }}
@@ -146,7 +142,7 @@
                                             :href="
                                                 route('budgets.edit', budget.id)
                                             "
-                                            class="text-blue-600 hover:text-blue-800"
+                                            class="hover:text-info"
                                         >
                                             <svg
                                                 class="w-5 h-5"
@@ -164,7 +160,7 @@
                                         </Link>
                                         <button
                                             @click="deleteBudget(budget.id)"
-                                            class="text-red-600 hover:text-red-800"
+                                            class="hover:text-primary"
                                         >
                                             <svg
                                                 class="w-5 h-5"
@@ -186,7 +182,7 @@
                                 <!-- Progress Bar -->
                                 <div class="space-y-2">
                                     <div
-                                        class="w-full bg-gray-200 rounded-full h-3"
+                                        class="w-full bg-accent rounded-full h-3"
                                     >
                                         <div
                                             class="h-3 rounded-full transition-all"
@@ -226,7 +222,7 @@
                                                       ) + " over budget"
                                             }}
                                         </span>
-                                        <span class="text-gray-600"
+                                        <span class="text-muted-foreground"
                                             >{{
                                                 Math.round(budget.percentage)
                                             }}%</span
@@ -241,9 +237,9 @@
                                         budget.percentage === 100 &&
                                         budget.remaining === 0
                                     "
-                                    class="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-md"
+                                    class="mt-3 p-3 bg-info-content border border-blue-200 rounded-md"
                                 >
-                                    <p class="text-sm text-blue-800">
+                                    <p class="text-sm">
                                         <span class="font-medium"
                                             >✅ Budget exactly used!</span
                                         >
@@ -255,9 +251,9 @@
                                 <!-- Warning if over budget -->
                                 <div
                                     v-else-if="budget.percentage > 100"
-                                    class="mt-3 p-3 bg-red-50 border border-red-200 rounded-md"
+                                    class="mt-3 p-3 bg-error-content border border-red-200 rounded-md"
                                 >
-                                    <p class="text-sm text-red-800">
+                                    <p class="text-sm">
                                         <span class="font-medium"
                                             >⚠️ Budget exceeded!</span
                                         >
@@ -274,9 +270,9 @@
                                 <!-- Warning if near budget -->
                                 <div
                                     v-else-if="budget.percentage >= 90"
-                                    class="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-md"
+                                    class="mt-3 p-3 bg-warning-content border border-yellow-200 rounded-md"
                                 >
-                                    <p class="text-sm text-yellow-800">
+                                    <p class="text-sm">
                                         <span class="font-medium"
                                             >⚡ Almost there!</span
                                         >

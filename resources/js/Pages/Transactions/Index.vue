@@ -19,7 +19,7 @@
                 <!-- Flash Messages -->
                 <div
                     v-if="$page.props.flash && $page.props.flash.success"
-                    class="mb-4 p-4 bg-green-50 border border-green-200 text-green-800 rounded-lg"
+                    class="mb-4 p-4 bg-success-content border border-green-200 rounded-lg"
                 >
                     {{ $page.props.flash.success }}
                 </div>

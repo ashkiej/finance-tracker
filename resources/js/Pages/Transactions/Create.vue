@@ -1,7 +1,7 @@
 <template>
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl leading-tight">
+            <h2 class="font-semibold text-primary text-xl leading-tight">
                 Add New Transaction
             </h2>
         </template>

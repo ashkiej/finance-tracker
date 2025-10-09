@@ -1,29 +1,26 @@
 <template>
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-primary text-xl leading-tight">
                 Edit Category
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-card overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
                         <form @submit.prevent="submitForm" class="space-y-6">
-                            <!-- Type Display (Read-only) -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Category Type
                                 </label>
                                 <div
                                     :class="[
                                         'p-4 border-2 rounded-lg',
                                         category.type === 'income'
-                                            ? 'border-green-500 bg-green-50'
-                                            : 'border-red-500 bg-red-50',
+                                            ? 'border-green-500 bg-success-content'
+                                            : 'border-red-500 bg-error-content',
                                     ]"
                                 >
                                     <div class="text-2xl mb-2">
@@ -37,23 +34,21 @@
                                         {{ category.type }}
                                     </div>
                                 </div>
-                                <p class="text-xs text-gray-500 mt-1">
+                                <p class="text-xs text-muted-foreground mt-1">
                                     Category type cannot be changed
                                 </p>
                             </div>
 
                             <!-- Name -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Category Name *
                                 </label>
                                 <input
                                     v-model="form.name"
                                     type="text"
                                     placeholder="e.g., Groceries, Salary, Entertainment"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 />
                                 <div
@@ -66,9 +61,7 @@
 
                             <!-- Color -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Color *
                                 </label>
                                 <div class="flex space-x-2 items-center">
@@ -78,9 +71,10 @@
                                         class="h-10 w-20 rounded border-gray-300"
                                         required
                                     />
-                                    <span class="text-sm text-gray-600">{{
-                                        form.color
-                                    }}</span>
+                                    <span
+                                        class="text-sm text-muted-foreground"
+                                        >{{ form.color }}</span
+                                    >
                                 </div>
                                 <div class="mt-2 flex flex-wrap gap-2">
                                     <button
@@ -107,19 +101,17 @@
 
                             <!-- Icon -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Icon *
                                 </label>
                                 <input
                                     v-model="form.icon"
                                     type="text"
                                     placeholder="cash, shopping-bag, heart"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 />
-                                <p class="text-xs text-gray-500 mt-1">
+                                <p class="text-xs text-muted-foreground mt-1">
                                     Use any Heroicons name (e.g., banknotes,
                                     shopping-cart, heart)
                                 </p>
@@ -132,12 +124,8 @@
                             </div>
 
                             <!-- Preview -->
-                            <div class="border rounded-lg p-4 bg-gray-50">
-                                <p
-                                    class="text-sm font-medium text-gray-700 mb-2"
-                                >
-                                    Preview
-                                </p>
+                            <div class="bg-accent border rounded-lg p-4">
+                                <p class="text-sm font-medium mb-2">Preview</p>
                                 <div class="flex items-center space-x-3">
                                     <div
                                         class="w-12 h-12 rounded-full flex items-center justify-center"
@@ -150,12 +138,10 @@
                                         }}</span>
                                     </div>
                                     <div>
-                                        <p class="font-medium text-gray-900">
+                                        <p class="font-medium">
                                             {{ form.name }}
                                         </p>
-                                        <p
-                                            class="text-sm text-gray-500 capitalize"
-                                        >
+                                        <p class="text-sm capitalize">
                                             {{ category.type }}
                                         </p>
                                     </div>
@@ -166,14 +152,14 @@
                             <div class="flex justify-end space-x-3">
                                 <Link
                                     :href="route('categories.index')"
-                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
+                                    class="px-4 py-2 bg-muted text-muted-700 rounded-md hover:bg-muted/30"
                                 >
                                     Cancel
                                 </Link>
                                 <button
                                     type="submit"
                                     :disabled="form.processing"
-                                    class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50"
+                                    class="px-4 py-2 bg-primary rounded-md hover:bg-primary/70 disabled:opacity-50"
                                 >
                                     {{
                                         form.processing

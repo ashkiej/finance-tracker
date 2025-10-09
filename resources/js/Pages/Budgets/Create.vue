@@ -1,26 +1,24 @@
 <template>
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-primary leading-tight">
                 Set New Budget
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-card overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
                         <form @submit.prevent="submitForm" class="space-y-6">
                             <!-- Category -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Category *
                                 </label>
                                 <select
                                     v-model="form.category_id"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 >
                                     <option value="">
@@ -44,16 +42,16 @@
 
                             <!-- Amount -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Budget Amount *
                                 </label>
                                 <div class="relative">
                                     <div
                                         class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
                                     >
-                                        <span class="text-gray-500">$</span>
+                                        <span class="text-muted-foreground"
+                                            >$</span
+                                        >
                                     </div>
                                     <input
                                         v-model="form.amount"
@@ -61,11 +59,11 @@
                                         step="0.01"
                                         min="0.01"
                                         placeholder="0.00"
-                                        class="w-full pl-7 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        class="w-full bg-accent pl-7 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                         required
                                     />
                                 </div>
-                                <p class="text-xs text-gray-500 mt-1">
+                                <p class="text-xs text-muted-foreground mt-1">
                                     Set the maximum amount you want to spend in
                                     this category
                                 </p>
@@ -79,14 +77,12 @@
 
                             <!-- Month -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Month *
                                 </label>
                                 <select
                                     v-model="form.month"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 >
                                     <option
@@ -107,14 +103,12 @@
 
                             <!-- Year -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Year *
                                 </label>
                                 <select
                                     v-model="form.year"
-                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="w-full bg-accent rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 >
                                     <option
@@ -135,7 +129,7 @@
 
                             <!-- Info Box -->
                             <div
-                                class="bg-blue-50 border border-blue-200 rounded-lg p-4"
+                                class="bg-info-content border border-blue-200 rounded-lg p-4"
                             >
                                 <div class="flex">
                                     <div class="flex-shrink-0">
@@ -152,12 +146,10 @@
                                         </svg>
                                     </div>
                                     <div class="ml-3">
-                                        <h3
-                                            class="text-sm font-medium text-blue-800"
-                                        >
+                                        <h3 class="text-sm font-medium">
                                             Budget Tips
                                         </h3>
-                                        <div class="mt-2 text-sm text-blue-700">
+                                        <div class="mt-2 text-sm">
                                             <ul
                                                 class="list-disc list-inside space-y-1"
                                             >
@@ -186,14 +178,14 @@
                             <div class="flex justify-end space-x-3">
                                 <Link
                                     :href="route('budgets.index')"
-                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
+                                    class="px-4 py-2 bg-muted rounded-md hover:bg-muted/70"
                                 >
                                     Cancel
                                 </Link>
                                 <button
                                     type="submit"
                                     :disabled="form.processing"
-                                    class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50"
+                                    class="px-4 py-2 bg-primary rounded-md hover:bg-primary/70 disabled:opacity-50"
                                 >
                                     {{
                                         form.processing

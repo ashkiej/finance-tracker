@@ -1,25 +1,23 @@
 <template>
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-primary leading-tight">
                 Edit Budget
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-card overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
                         <form @submit.prevent="submitForm" class="space-y-6">
                             <!-- Category Display (Read-only) -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Category
                                 </label>
                                 <div
-                                    class="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg"
+                                    class="flex items-center space-x-3 p-4 bg-accent rounded-lg"
                                 >
                                     <div
                                         class="w-10 h-10 rounded-full flex items-center justify-center"
@@ -32,45 +30,43 @@
                                             >💸</span
                                         >
                                     </div>
-                                    <span class="font-medium text-gray-900">{{
+                                    <span class="font-medium">{{
                                         budget.category.name
                                     }}</span>
                                 </div>
-                                <p class="text-xs text-gray-500 mt-1">
+                                <p class="text-xs text-muted-foreground mt-1">
                                     Category cannot be changed
                                 </p>
                             </div>
 
                             <!-- Period Display (Read-only) -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Budget Period
                                 </label>
-                                <div class="p-4 bg-gray-50 rounded-lg">
-                                    <span class="font-medium text-gray-900"
+                                <div class="p-4 bg-accent rounded-lg">
+                                    <span class="font-medium"
                                         >{{ getMonthName(budget.month) }}
                                         {{ budget.year }}</span
                                     >
                                 </div>
-                                <p class="text-xs text-gray-500 mt-1">
+                                <p class="text-xs text-muted-foreground mt-1">
                                     Period cannot be changed
                                 </p>
                             </div>
 
                             <!-- Amount -->
                             <div>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label class="block text-sm font-medium mb-2">
                                     Budget Amount *
                                 </label>
                                 <div class="relative">
                                     <div
                                         class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
                                     >
-                                        <span class="text-gray-500">$</span>
+                                        <span class="text-muted-foreground"
+                                            >$</span
+                                        >
                                     </div>
                                     <input
                                         v-model="form.amount"
@@ -78,11 +74,11 @@
                                         step="0.01"
                                         min="0.01"
                                         placeholder="0.00"
-                                        class="w-full pl-7 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        class="w-full bg-accent pl-7 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                         required
                                     />
                                 </div>
-                                <p class="text-xs text-gray-500 mt-1">
+                                <p class="text-xs text-muted-foreground mt-1">
                                     Update the maximum amount for this category
                                 </p>
                                 <div
@@ -97,14 +93,14 @@
                             <div class="flex justify-end space-x-3">
                                 <Link
                                     :href="route('budgets.index')"
-                                    class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
+                                    class="px-4 py-2 bg-muted rounded-md hover:bg-muted/30"
                                 >
                                     Cancel
                                 </Link>
                                 <button
                                     type="submit"
                                     :disabled="form.processing"
-                                    class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50"
+                                    class="px-4 py-2 bg-primary rounded-md hover:bg-primary/70 disabled:opacity-50"
                                 >
                                     {{
                                         form.processing

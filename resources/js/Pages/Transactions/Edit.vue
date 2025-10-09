@@ -1,7 +1,9 @@
 <template>
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2
+                class="font-semibold text-primary text-xl text-gray-800 leading-tight"
+            >
                 Edit Transaction
             </h2>
         </template>
@@ -145,7 +147,7 @@
                                 <button
                                     type="submit"
                                     :disabled="form.processing"
-                                    class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/70 disabled:opacity-50"
+                                    class="px-4 py-2 bg-primary rounded-md hover:bg-primary/70 disabled:opacity-50"
                                 >
                                     {{
                                         form.processing

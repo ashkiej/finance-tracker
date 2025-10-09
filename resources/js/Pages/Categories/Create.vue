@@ -1,7 +1,7 @@
 <template>
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl leading-tight">
+            <h2 class="font-semibold text-primary text-xl leading-tight">
                 Add New Category
             </h2>
         </template>
@@ -84,9 +84,10 @@
                                         class="h-10 w-20 rounded"
                                         required
                                     />
-                                    <span class="text-sm text-gray-600">{{
-                                        form.color
-                                    }}</span>
+                                    <span
+                                        class="text-sm text-muted-foreground"
+                                        >{{ form.color }}</span
+                                    >
                                 </div>
                                 <div class="mt-2 flex flex-wrap gap-2">
                                     <button
@@ -123,7 +124,7 @@
                                     class="w-full bg-accent rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 />
-                                <p class="text-xs text-gray-500 mt-1">
+                                <p class="text-xs text-muted-foreground mt-1">
                                     Use any Heroicons name (e.g., banknotes,
                                     shopping-cart, heart)
                                 </p>
